@@ -8,16 +8,31 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]){
-	int r = 2;
-	int c = 3;
+	int rA = 2;
+	int rB = 3;
+	int cA = 3;
+	int cB = 2;
 
-	double **A = xalloc(r, c);
-	print_Matrix(r,c,A);
-	printf("setting (1,1) to 15.5\n");
-	aset(1,1,A,15.5);
-	print_Matrix(r,c,A);
-	printf("aref of (1,1) returned: %f \n", aref(1,1,A));
-	xfree(r,c,A);
-	print_Matrix(r,c,A);
+	double **A = xalloc(rA, cA);
+	double **B = xalloc(rB, cB);
+	double **C = xalloc(rA, cB);
+
+aset(1,1,A,1.00);
+aset(2,2,A,1.00);
+
+aset(1,1,B,2.00);
+aset(1,2,B,2.00);
+aset(1,3,B,1.00);
+aset(2,1,B,1.00);
+aset(2,2,B,2.00);
+aset(2,3,B,2.00);
+
+	print_Matrix(rA, cA, A);
+	printf("\n\n");
+	print_Matrix(rB, cB, B);
+	printf("\n\n");
+	print_Matrix(rA, cB, C);
+//	printf("%.2f\n", aref(1,1,C));
+	printf("\n\n");
 	return 0;
 }

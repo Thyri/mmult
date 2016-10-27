@@ -20,6 +20,22 @@
 //
 //returns **mmult: A new matrix C of size (rA x cB), requires xalloc.
 double **mmult(int rA, int cA, double **A, int rB, int cB, double **B){
+	double **result = xalloc(rA, cB);
+	int i = 0; //to be compared to rA
+	int j = 0; //to be compared to cB
+	int k = 0; //to be compared to cA/rB (These should be the same)
+	int sum = 0;
+
+	for (i = 0; i < rA; i++){
+		for (j = 0; j < cB; j ++){
+			for (k = 0; k < cA; k++){
+				sum = sum + A[i][k]*B[k][j];
+				printf("sum = %d\n", sum);
+			}
+			result[i][j] = sum;
+			sum = 0;
+		}
+	}
 	return 0;
 }
 
@@ -79,7 +95,7 @@ void print_Matrix(int r, int c, double **A){
 
 	for (i = 0; i <  r; i++){
 		for (j = 0; j < c; j++){
-			printf("%f     ", A[i][j]);
+			printf("%.2f     ", A[i][j]);
 		}
 		printf("\n");
 	}
