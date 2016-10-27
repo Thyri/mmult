@@ -36,4 +36,10 @@ double **mread(FILE *fp, int *r, int *c);
 // writes the rAxcA matrix A to already open file
 void mwrite(FILE *fp, int rA, int cA, double **A);
 
+// return the element of A at the r-th row and c-th column
+double aref(int r, int c, double **A);
+
+// set the value of the element of A at the r-th row and c-th column to x
+void aset(int r, int c, double **A, double x);
+
 #endif
