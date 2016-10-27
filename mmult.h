@@ -32,4 +32,7 @@ void aset(int r, int c, double **A, double x);
 
 // print out the contents of a matrix
 void print_Matrix(int r, int c, double **A);
+
+// determine the dimensions of a matrix
+int *get_dimensions(char *input);
 #endif

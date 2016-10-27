@@ -8,35 +8,39 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]){
-	int rA = 2;
-	int rB = 3;
-	int cA = 3;
-	int cB = 2;
 
-	double **A = xalloc(rA, cA);
-	double **B = xalloc(rB, cB);
+	int number_of_matrices = 0;
+	char input[MAXLINE];
 
-	aset(1,1,A,1.00);
-	aset(2,2,A,1.00);
+	int state_flag = -1;
+	int rows = 0;
+	int cols = 0;
+	int *dimensions;
 
-	aset(1,1,B,2.00);
-	aset(1,2,B,1.00);
-	aset(2,1,B,2.00);
-	aset(2,2,B,2.00);
-	aset(3,1,B,1.00);
-	aset(3,2,B,2.00);
+	int curpos = 1;
 
+	while(fgets(input, MAXLINE, stdin)){
+		if (state_flag == -1){
+			number_of_matrices = atoi(input);
+			state_flag = 0;
+			printf("There are %d matrices\n", number_of_matrices);
 
-	print_Matrix(rA, cA, A);
-	printf("\n\n");
-	print_Matrix(rB, cB, B);
-	printf("\n\n");
+		}
+		else if (state_flag == 0){
+			dimensions = get_dimensions(input);
+			rows = dimensions[0];
+			cols = dimensions[1];
+			printf("Matrix #%d Was found:\n", curpos++);
+			printf("	It has %d rows\n", rows);
+			printf("	it has %d cols\n", cols);
+			printf("\n\n");
+			state_flag = rows;
+		}
+		else if (state_flag >= 0){
+			state_flag = state_flag - 1;
+			continue;
+		}
+	}
 
-	double **C = NULL;
-	C = mmult(rA, cA, A, rB, cB, B);
-
-	print_Matrix(rA, cB, C);
-//	printf("%.2f\n", aref(1,1,C));
-	printf("\n\n");
 	return 0;
 }

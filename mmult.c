@@ -77,11 +77,17 @@ void xfree(int r, int c, double **A){
 //}
 
 // return the element of A at the r-th row and c-th column
+// Matrix notation would have A[0][0] be represented by A(1,1)
+//      to account for this, we subtract 1 from r and c to convert from
+//      matrix notation to array notation
 double aref(int r, int c, double **A){
 	return A[r-1][c-1];
 }
 
 // set the value of the element of A at the r-th row and c-th column to x
+// Matrix notation would have A[0][0] be represented by A(1,1)
+//	to account for this, we subtract 1 from r and c to convert from
+//	matrix notation to array notation
 void aset(int r, int c, double **A, double x){
 	A[r-1][c-1] = x;
 	return;
@@ -100,4 +106,26 @@ void print_Matrix(int r, int c, double **A){
 	}
 
 	return;
+}
+
+// When the main function determines that it needs the dimensions
+// for the next array, this function is called on the next line of
+// input.
+//
+//returns: array, an array of size 2 that contains the ints [rows, cols]
+int *get_dimensions(char *input){
+	int i = 0;
+	char *p = strtok (input, " ");
+	int *array = (int *)malloc(2 * sizeof(int));
+
+	int placeholder = 0;
+
+	while (p != NULL)
+	{
+		placeholder = atoi(p);
+		array[i++] = placeholder;
+		p = strtok (NULL, " ");
+	}
+
+	return array;
 }
