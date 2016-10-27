@@ -15,22 +15,26 @@ int main(int argc, char *argv[]){
 
 	double **A = xalloc(rA, cA);
 	double **B = xalloc(rB, cB);
-	double **C = xalloc(rA, cB);
 
-aset(1,1,A,1.00);
-aset(2,2,A,1.00);
+	aset(1,1,A,1.00);
+	aset(2,2,A,1.00);
 
-aset(1,1,B,2.00);
-aset(1,2,B,2.00);
-aset(1,3,B,1.00);
-aset(2,1,B,1.00);
-aset(2,2,B,2.00);
-aset(2,3,B,2.00);
+	aset(1,1,B,2.00);
+	aset(1,2,B,1.00);
+	aset(2,1,B,2.00);
+	aset(2,2,B,2.00);
+	aset(3,1,B,1.00);
+	aset(3,2,B,2.00);
+
 
 	print_Matrix(rA, cA, A);
 	printf("\n\n");
 	print_Matrix(rB, cB, B);
 	printf("\n\n");
+
+	double **C = NULL;
+	C = mmult(rA, cA, A, rB, cB, B);
+
 	print_Matrix(rA, cB, C);
 //	printf("%.2f\n", aref(1,1,C));
 	printf("\n\n");

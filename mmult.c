@@ -30,13 +30,12 @@ double **mmult(int rA, int cA, double **A, int rB, int cB, double **B){
 		for (j = 0; j < cB; j ++){
 			for (k = 0; k < cA; k++){
 				sum = sum + A[i][k]*B[k][j];
-				printf("sum = %d\n", sum);
 			}
 			result[i][j] = sum;
 			sum = 0;
 		}
 	}
-	return 0;
+	return result;
 }
 
 // Dynamically allocate an r x c matrix of doubles, initialized to zeros.
