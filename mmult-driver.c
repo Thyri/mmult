@@ -30,15 +30,24 @@ int main(int argc, char *argv[]){
 			dimensions = get_dimensions(input);
 			rows = dimensions[0];
 			cols = dimensions[1];
+
 			printf("Matrix #%d Was found:\n", curpos++);
 			printf("	It has %d rows\n", rows);
 			printf("	it has %d cols\n", cols);
 			printf("\n\n");
+
 			state_flag = rows;
+//			printf(" the State flag is set to %d\n", state_flag);
+//
+//			double **A = mread(stdin, rows, cols);
+//			print_Matrix(rows, cols, A);
+
 		}
-		else if (state_flag >= 0){
+		else if (state_flag >=0){
 			state_flag = state_flag - 1;
 			continue;
+			printf(" the State flag is set to %d\n", state_flag);
+
 		}
 	}
 

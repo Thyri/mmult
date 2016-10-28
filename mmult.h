@@ -6,6 +6,7 @@
 // // // // // // // // // // // // // //
 
 #ifndef MMULT_H
+#include <stdio.h>
 #define MMULT_H
 #define NUL     '\0'
 #define MAXLINE 80
@@ -19,7 +20,7 @@ double **xalloc(int r, int c);
 void xfree(int r, int c, double **A);
 
 // reads a matrix (in row-major order) from file
-//double **mread(FILE *fp, int *r, int *c);
+double **mread(FILE *fp, int r, int c);
 
 // writes the rAxcA matrix A to already open file
 //void mwrite(FILE *fp, int rA, int cA, double **A);

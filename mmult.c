@@ -67,9 +67,20 @@ void xfree(int r, int c, double **A){
 }
 
 // reads a matrix (in row-major order) from file
-//double **mread(FILE *fp, int *r, int *c){
-//	return 0;
-//}
+double **mread(FILE *fp, int r, int c){
+	double **arr = xalloc(r, c);
+	float num = 0;
+	int i = 0;
+	int j = 0;
+
+	for (i = 0; i < r; i++){
+		for (j = 0; j < c; j++){
+			fscanf(fp, "%f", &num);
+			arr[i][j] = (double) num;
+		}
+	}
+	return arr;
+}
 
 // writes the rAxcA matrix A to already open file
 //void mwrite(FILE *fp, int rA, int cA, double **A){
